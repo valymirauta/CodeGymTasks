@@ -18,7 +18,7 @@ public class Solution {
         DBObject initializeIdAndName(long id, String name);
     }
 
-    static class User {
+    static class User implements DBObject{
         long id;
         String name;
 
@@ -27,11 +27,12 @@ public class Solution {
             return String.format("The user's name is %s, id = %d", name, id);
         }
 
-        public DBObject initializeIdAndName(int i, String neo) {
-            this.id= i;
-            this.name=neo;
-            return
+        @Override
+        public User initializeIdAndName(long id, String name) {
+            this.id=id;
+            this.name=name;
 
+            return this;
         }
     }
 }
